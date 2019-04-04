@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypePraticien
+ *
+ * @ORM\Table(name="type_praticien")
+ * @ORM\Entity
+ */
+class TypePraticien
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_libelle", type="string", length=50, nullable=true)
+     */
+    private $typeLibelle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_lieu", type="string", length=70, nullable=true)
+     */
+    private $typeLieu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_code", type="string", length=6)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $typeCode;
+
+
+}
+

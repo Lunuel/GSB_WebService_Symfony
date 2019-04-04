@@ -1,0 +1,69 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RapportVisite
+ *
+ * @ORM\Table(name="rapport_visite", indexes={@ORM\Index(name="FK_RV_Praticien", columns={"pra_num"}), @ORM\Index(name="IDX_D1D741717BFA9247", columns={"vis_matricule"})})
+ * @ORM\Entity
+ */
+class RapportVisite
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rap_bilan", type="string", length=510, nullable=true)
+     */
+    private $rapBilan = '';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="rap_dateVisite", type="date", nullable=true)
+     */
+    private $rapDatevisite;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="rap_dateRapport", type="date", nullable=true)
+     */
+    private $rapDaterapport;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rap_num", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $rapNum;
+
+    /**
+     * @var \AppBundle\Entity\Visiteur
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Visiteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vis_matricule", referencedColumnName="vis_matricule")
+     * })
+     */
+    private $visMatricule;
+
+    /**
+     * @var \AppBundle\Entity\Praticien
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Praticien")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pra_num", referencedColumnName="pra_num")
+     * })
+     */
+    private $praNum;
+
+
+}
+

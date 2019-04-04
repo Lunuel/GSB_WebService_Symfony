@@ -1,0 +1,88 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Praticien
+ *
+ * @ORM\Table(name="praticien", indexes={@ORM\Index(name="FK_Praticien_Type_Praticien", columns={"pra_typeCode"}), @ORM\Index(name="FK_Praticien_Visiteur", columns={"pra_visiteur"})})
+ * @ORM\Entity
+ */
+class Praticien
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pra_nom", type="string", length=50, nullable=true)
+     */
+    private $praNom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pra_prenom", type="string", length=60, nullable=true)
+     */
+    private $praPrenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pra_adresse", type="string", length=100, nullable=true)
+     */
+    private $praAdresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pra_cp", type="string", length=10, nullable=true)
+     */
+    private $praCp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pra_ville", type="string", length=50, nullable=true)
+     */
+    private $praVille;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pra_coefNotoriete", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $praCoefnotoriete;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pra_num", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $praNum;
+
+    /**
+     * @var \AppBundle\Entity\TypePraticien
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypePraticien")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pra_typeCode", referencedColumnName="type_code")
+     * })
+     */
+    private $praTypecode;
+
+    /**
+     * @var \AppBundle\Entity\Visiteur
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Visiteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pra_visiteur", referencedColumnName="vis_matricule")
+     * })
+     */
+    private $praVisiteur;
+
+
+}
+
