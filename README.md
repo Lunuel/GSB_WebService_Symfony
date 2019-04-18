@@ -1,1 +1,2 @@
-# S3_GSB_Services
+# Web Service for Android Application
+
